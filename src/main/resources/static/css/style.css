@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#wrap{
+	width:500px;
+	height:800px;
+	margin:auto;
+}
+
+.content{
+	height:500px;
+	border-style:solid;
+	border-width:1px;
+	border-color:gray; 
+}
+
+.yongstarLogo{
+	font-family: 'Lobster', cursive;
+}
+
+.information{
+	font-weight:bold;
+}
+
+.facebookLogo{
+	width:25px;
+	height:auto;
+}
+
+.facebookSigninBtn{
+	
+}
+
+hr{
+	width:100px;
+}
+
+.content2{
+	height:100px;
+	border-style:solid;
+	border-width:1px;
+	border-color:gray; 	
+}
+
+
+
+
+
+
+
+
+
+
