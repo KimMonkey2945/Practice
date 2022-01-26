@@ -3,6 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis dtd로 검색해서 가져오기!! -->
  
  <mapper namespace="com.totti.yongstargram.user.dao.UserDAO">
+ 	
  	<insert id="insertUser" parameterType="map">
  		INSERT INTO	`user`(
  			`loginId`
@@ -14,7 +15,7 @@
  			,`updatedAt`
  		
  		)VALUES(
- 			#{userId}
+ 			#{loginId}
  			,#{password}
  			,#{name}
  			,#{nickName}
@@ -24,6 +25,24 @@
  		
  		)
  	</insert>
+ 	
+ 	<select id="selectUser" parameterType="map" resultType="com.totti.yongstargram.user.model.User">
+ 		SELECT
+ 			`id`
+ 			,`loginId`
+ 			,`password`
+ 			,`name`
+ 			,`nickName`
+ 			,`introduce`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId} AND `password` = #{password}
+ 	
+ 	
+ 	</select>
  
  
  </mapper>
