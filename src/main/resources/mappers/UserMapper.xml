@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis dtd로 검색해서 가져오기!! -->
  
  <mapper namespace="com.totti.yongstargram.user.dao.UserDAO">
- 	<insert>
+ 	<insert id="insertUser" parameterType="map">
  		INSERT INTO	`user`(
  			`loginId`
  			,`password`
