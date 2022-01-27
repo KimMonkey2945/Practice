@@ -36,7 +36,7 @@
 
 <body>
 
-	<div id="loginView">
+	<div id="signUpView">
 		<div class="content">
 			<h1 class="yongstarLogo text-center">Yongstargram</h1>
 			<div class="information text-center display-5 text-secondary">
@@ -44,8 +44,8 @@
 			</div>
 			<div class="d-flex justify-content-center">
 				<a>
-					<button class="facebookSigninBtn btn btn-primary">
-						<img class="facebookLogo" src="" alt="페이스북로고" />Facebook으로 로그인
+					<button class="facebookSigninBtn btn btn-primary text-light">
+						<img class="mr-2 facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />Facebook으로 로그인
 					</button>
 				</a>
 			</div>
@@ -54,24 +54,30 @@
 				또는
 				<hr>
 			</div>
-				<div class="">
-					<input class="form-control" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
-					<input class="form-control my-2"type="text" id="nameInput" placeholder="성명" />
-					<input class="form-control my-2" type="text" id="nickNameInput" placeholder="사용자 이름" />
-					<input class="form-control my-2" type="password" id="passwordInput" placeholder="비밀번호" />
-					<textarea class="form-control my-2" id="introduceInput" placeholder="자기소개"></textarea>
-					<button class="form-control btn btn-block btn-primary" id="joinBtn" type="button">가입</button>
+			
+				<div class="d-flex justify-content-center">
+					<div>
+						<input class="form-control" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
+						<input class="form-control my-2"type="text" id="nameInput" placeholder="성명" />
+						<input class="form-control my-2" type="text" id="nickNameInput" placeholder="사용자 이름" />
+						<input class="form-control my-2" type="password" id="passwordInput" placeholder="비밀번호" />
+						<textarea class="form-control my-2" id="introduceInput" placeholder="자기소개"></textarea>
+						<button class="form-control btn btn-block btn-primary" id="joinBtn" type="button">가입</button>
+					</div>
 				</div>
+		
+		
 		</div>
 		<div class="mt-3 d-flex content2 align-items-center justify-content-center">
 			계정이 있으신가요?<a class="ml-3" href="/user/signin_view">로그인</a>
 		</div>
 		
-		<div class="mt-4 d-flex align-items-center justify-content-center">
-			앱을 다운로드하세요. <img alt="" src=""> <img alt="" src="">
+		<div class="text-center">앱을 다운로드하세요.</div>
+		<div class="mt-4 d-flex align-items-center justify-content-center">			 
+			<a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img alt="애플스토어이미지" src="/static/images/applestore.png"></a> 
+			<a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=67D3F259-AE2C-46A5-81EA-19E7F2054EF7&utm_content=lo&utm_medium=badge"><img class="ml-2" alt="구글플레이스토어이미지" src="/static/images/googlestore.png"></a>
 		</div>
-		
-		<footer class=" mt-5 d-flex justify-content-center">
+		<footer class=" mt-3 d-flex justify-content-center">
 			<div class="small text-secondary">© 2022 Instagram from Meta</div>
 		</footer>
 

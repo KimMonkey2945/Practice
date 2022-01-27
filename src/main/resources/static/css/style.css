@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
-#wrap{
+#signUpView{
 	width:500px;
 	margin:auto;
 }
 
 .content{
+	width:500px;
 	height:500px;
 	border-style:solid;
 	border-width:1px;
@@ -21,16 +22,17 @@
 }
 
 .facebookLogo{
-	width:25px;
+	width:35px;
 	height:auto;
 }
 
 .facebookSigninBtn{
-	
+	display:flex;
+	align-items:center;
 }
 
 hr{
-	width:100px;
+	width:70px;
 }
 
 
@@ -47,12 +49,13 @@ hr{
 
 #loginView{
 	width:1000px;
+	height:800px;
 	margin:auto;
 }
 
 .loginImage{
 	width:500px;
-	height:800px;
+	height:600px;
 }
 
 .login{

@@ -36,46 +36,51 @@
 <body>
 
 
-	<div id="wrap">
-		<div class="d-flex">
+	<div id="loginView">
+		<div class="d-flex justify-content-center">
 		
 			<div>
-				<img class="loginImage" src="https://img.etnews.com/photonews/1907/1209656_20190726093254_012_0002.jpg" alt="인스타그램이미지"/>		
+				<img class="loginImage" id="loginImg" src="/static/images/loginBanner1.png" alt="인스타그램이미지"/>		
 			</div>
 		
-		<div>
+		<div class="ml-3">
 			<div class="login">
 				<h1 class="yongstarLogo text-center">Yongstargram</h1>
-			<div class="">
-			<form id="loginForm">
-				<input class="form-control" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
-				<input class="form-control my-2" type="password" id="passwordInput" placeholder="비밀번호" />
-				<button class="form-control btn btn-block btn-primary" type="submit">로그인</button>
-			</form>
+				<div class="d-flex justify-content-center">
+					<div>
+						<div>
+							<form id="loginForm">
+								<input class="form-control my-4" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
+								<input class="form-control my-4" type="password" id="passwordInput" placeholder="비밀번호" />
+								<button class="form-control my-4 btn btn-block btn-primary" type="submit">로그인</button>
+							</form>
+						</div>
+						
+						<div class="d-flex">
+							<hr>또는<hr>
+						</div>
+						<div class="d-flex justify-content-center">
+							<img class="facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />
+							<a href="" class="facebookSigninBtn text-center text-primary">Facebook으로 로그인</a>
+						</div>
+							<div class="text-center">비밀번호를 잊으셨나요??</div>				
+					</div>
+				</div>
+			</div>
+					<div class="mt-3 d-flex content2 align-items-center justify-content-center">
+					계정이 없으신가요? <a class="ml-2" href="/user/signup_view">가입하기</a>
+					</div>
+				
+			
+			<div class="text-center">앱을 다운로드하세요.</div>
+			<div class="mt-4 d-flex align-items-center justify-content-center">			 
+				<a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img alt="애플스토어이미지" src="/static/images/applestore.png"></a> 
+				<a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=67D3F259-AE2C-46A5-81EA-19E7F2054EF7&utm_content=lo&utm_medium=badge"><img class="ml-2" alt="구글플레이스토어이미지" src="/static/images/googlestore.png"></a>
 			</div>
 			
-			<div class="d-flex">
-			<hr>또는<hr>
-			</div>
-				<a>
-					<a class="facebookSigninBtn text-primary">
-						<img class="facebookLogo" src="" alt="페이스북로고" />Facebook으로 로그인
-					</a>
-				</a>
-				<div>비밀번호를 잊으셨나요??</div>				
-			</div>
 			
-			<div class="mt-3 d-flex content2 align-items-center justify-content-center">
-			계정이 없으신가요? <a class="ml-2" href="/user/signup_view">가입하기</a>
 			</div>
-		
-			<div class="mt-4 d-flex align-items-center justify-content-center">
-				앱을 다운로드하세요. <img alt="" src=""> <img alt="" src="">
-			</div>
-			
-			
-		</div>
-			
+		</div>	
 	</div>
 
 			<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
@@ -119,6 +124,19 @@
 				
 				
 			});
+			
+			var loginBannerList = ["static/images/loginBanner1.png", "static/images/loginBanner2.png", "static/images/loginBanner3.png"]
+			var currentImageIndex = 0;
+			
+			setInterval(function(){
+				$("#loginImg").attr("src", loginBannerList[currerntImageIndex]);
+				currentImageIndex++;
+				if(currentImageIndex == loginBannerList.length){
+					currentImageIndex = 0;
+				}
+			}, 3000);
+			
+			
 		});
 	
 	</script>
