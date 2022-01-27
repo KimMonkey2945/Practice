@@ -30,8 +30,17 @@ public class UserController {
 		session.removeAttribute("userLoginId");
 		session.removeAttribute("userNickName");
 		
-		return "redirect:/user/signin_view";
-		
+		return "redirect:/user/signin_view";		
+	}
+	
+	@GetMapping("/facebookSignIn_View")
+	public String facebookSignIn() {
+		return "user/facebookSignIn";
+	}
+	
+	@GetMapping("/facebookSignUp_View")
+	public String facebookSignUp() {
+		return "user/facebookSignUp";
 	}
 	
 }

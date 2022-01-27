@@ -37,13 +37,13 @@
 
 
 	<div id="loginView">
-		<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center mt-3">
 		
 			<div>
 				<img class="loginImage" id="loginImg" src="/static/images/loginBanner1.png" alt="인스타그램이미지"/>		
 			</div>
 		
-		<div class="ml-3">
+		<div class="ml-5">
 			<div class="login">
 				<h1 class="yongstarLogo text-center">Yongstargram</h1>
 				<div class="d-flex justify-content-center">
@@ -61,7 +61,7 @@
 						</div>
 						<div class="d-flex justify-content-center">
 							<img class="facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />
-							<a href="" class="facebookSigninBtn text-center text-primary">Facebook으로 로그인</a>
+							<a href="/user/facebookSignIn_View" class="facebookSigninBtn text-center text-primary">Facebook으로 로그인</a>
 						</div>
 							<div class="text-center">비밀번호를 잊으셨나요??</div>				
 					</div>
@@ -125,11 +125,11 @@
 				
 			});
 			
-			var loginBannerList = ["static/images/loginBanner1.png", "static/images/loginBanner2.png", "static/images/loginBanner3.png"]
+			var loginBannerList = ["/static/images/loginBanner1.png", "/static/images/loginBanner2.png", "/static/images/loginBanner3.png"]
 			var currentImageIndex = 0;
 			
 			setInterval(function(){
-				$("#loginImg").attr("src", loginBannerList[currerntImageIndex]);
+				$("#loginImg").attr("src", loginBannerList[currentImageIndex]);
 				currentImageIndex++;
 				if(currentImageIndex == loginBannerList.length){
 					currentImageIndex = 0;

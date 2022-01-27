@@ -43,11 +43,10 @@
 				친구들의 사진과 동영상을 보려면<br>가입하세요
 			</div>
 			<div class="d-flex justify-content-center">
-				<a>
 					<button class="facebookSigninBtn btn btn-primary text-light">
-						<img class="mr-2 facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />Facebook으로 로그인
+						<img class="mr-2 facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />
+						<a href="/user/facebookSignIn_View" class="facebookSigninBtn text-center text-light">Facebook으로 로그인</a>
 					</button>
-				</a>
 			</div>
 			<div class="d-flex">
 				<hr>

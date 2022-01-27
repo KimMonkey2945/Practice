@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<header class="d-flex align-items-center justify-content-between">
-		<img alt="인스타그램로고" src="">
+<header class="d-flex align-items-center justify-content-around">
+		<img class="instarLogo" alt="인스타그램로고" src="/static/images/instarLogo.png">
 		<h1 class="yongstarLogo text-center">Yongstargram</h1>
 		<div class="col-auto">
 	      		<label class="sr-only" for="inlineFormInputGroup">검색</label>
