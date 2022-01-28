@@ -31,42 +31,53 @@
 
 	<div class="facebookSignUp">
 		
-		<h1 class="text-primary">facebook</h1>
+		<h1 class="text-primary text-center">facebook</h1>
 		
-		<div class="d-flex">
-			<img class="instarSignUpLogo" src="/static/images/instarLogo.png" alt="인스타그램로고">
-			<div>
-				<h3>가입하기</h3>
-				<div>빠르고 쉽습니다.</div>
-			</div>
-		</div>
-		
-		<hr class="instarHr">
-		
-		<div>
-			<input class="form-control" type="text" value="성姓" id="lastNameInput">
-			<input class="form-control" type="text" value="이름(성은 제외)" id="nameInput">
-			<input class="form-control" type="text" value="휴대폰번호 또는 이메일" id="loginId">
-			<input class="form-control" type="text" value="새 비밀번호" id="passwordInput">
-			
-			<div>생일</div>
-			<div class="d-flex justify-cotnen-between">
-				<select class="form-control" id="yearInput"></select> 
-				<select class="form-control"  id="monthInput"></select> 
-				<select class="form-control" id="dayInput"></select>
+		<div class="facebookJoinPart">
+			<div class="d-flex justify-content-center">
+				<img class="instarSignUpLogo" src="/static/images/instarLogo.png" alt="인스타그램로고">
+				<div class="ml-5">
+					<h3>가입하기</h3>
+					<div>빠르고 쉽습니다.</div>
+				</div>
 			</div>
 			
-			<div>성별</div>
+			<hr class="instarHr">
+			
 			<div class="">
-				<label>여성<input class="form-control" name="sex" type="radio"></label>
-				<label>남성<input class="form-control" name="sex" type="radio"></label>
-				<label>직접지정<input class="form-control" name="sex" type="radio"></label>
+				<input class="form-control my-3" type="text" value="성姓" id="lastNameInput">
+				<input class="form-control my-3" type="text" value="이름(성은 제외)" id="nameInput">
+				<input class="form-control my-3" type="text" value="휴대폰번호 또는 이메일" id="loginId">
+				<input class="form-control " type="text" value="새 비밀번호" id="passwordInput">
+				
+				<div class="mt-3">생일</div>
+				<div class="d-flex justify-cotnen-between">
+					<select class="form-control" id="yearInput"></select> 
+					<select class="form-control"  id="monthInput"></select> 
+					<select class="form-control" id="dayInput"></select>
+				</div>
+				
+				<div class="mt-3">성별</div>
+				<div class="d-flex justify-content-around">
+					<label>여성<input class="form-control" name="sex" type="radio" value="female"></label>
+					<label>남성<input class="form-control" name="sex" type="radio" value="male"></label>
+					<label>직접지정<input class="form-control" name="sex" type="radio" value="personally" id="personally"></label>
+				</div>
+					<select class="form-control mt-2" id="checkSex">
+						<option>여성: "생일을 축하해주세요!"</option>
+						<option>남성: "생일을 축하해주세요!"</option>
+						<option>여러명: "생일을 축하세주세요!"</option>
+					</select>
+					<input class="form-control" type="text" value="성별(선택사항)" id="checkSex2" >
 			</div>
-			
-		</div>
-		
-		
-
+				
+					<div class="text-center mt-3">
+						<input class="form-control btn btn-success w-50" type="button" value="가입하기">
+					</div>
+					<div class="text-center mt-3">
+						<a href="">이미 계정이 있으신가요??</a>
+					</div>
+			</div>			
 	</div>
 
 
@@ -91,8 +102,19 @@
 		$("#dayInput > option[value="+day+"]").attr("selected", "true"); 
 		
 		
-		
-		
+		$("#checkSex").hide();
+		$("#checkSex2").hide();
+
+		$("input[name=sex]").on("change",function(){
+			if($(this).val() == "male" || $(this).val() == "female" ){
+			$("#checkSex").hide();
+			$("#checkSex2").hide();				
+			}
+			else{
+			$("#checkSex").show();
+			$("#checkSex2").show();								
+			}
+		});
 		
 		
 		
