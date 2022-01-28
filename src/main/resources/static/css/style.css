@@ -77,6 +77,9 @@ hr{
 	
 }
 
+.facebookLoginHeader{
+	background-color:blue;
+}
 
 .facebookTitle{
 	color:white;
@@ -100,6 +103,13 @@ hr{
 }
 
 /* facebook 회원가입 css*/
+
+.facebookSignUp{
+	width:600px;
+	height:800px;
+	margin:auto;
+}
+
 
 .instarSignUpLogo{
 	width:60px;

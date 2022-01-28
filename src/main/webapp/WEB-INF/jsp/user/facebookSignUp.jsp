@@ -31,7 +31,7 @@
 
 	<div class="facebookSignUp">
 		
-		<h1>facebook</h1>
+		<h1 class="text-primary">facebook</h1>
 		
 		<div class="d-flex">
 			<img class="instarSignUpLogo" src="/static/images/instarLogo.png" alt="인스타그램로고">
@@ -41,19 +41,72 @@
 			</div>
 		</div>
 		
-		<hr>
+		<hr class="instarHr">
 		
 		<div>
-			<input class="form-control" type="text" value="성姓">
-			<input class="form-control" type="text" value="이름(성은 제외)">
-			<input class="form-control" type="text" value="휴대폰번호 또는 이메일">
-			<input class="form-control" type="text" value="새 비밀번호">
+			<input class="form-control" type="text" value="성姓" id="lastNameInput">
+			<input class="form-control" type="text" value="이름(성은 제외)" id="nameInput">
+			<input class="form-control" type="text" value="휴대폰번호 또는 이메일" id="loginId">
+			<input class="form-control" type="text" value="새 비밀번호" id="passwordInput">
+			
+			<div>생일</div>
+			<div class="d-flex justify-cotnen-between">
+				<select class="form-control" id="yearInput"></select> 
+				<select class="form-control"  id="monthInput"></select> 
+				<select class="form-control" id="dayInput"></select>
+			</div>
+			
+			<div>성별</div>
+			<div class="">
+				<label>여성<input class="form-control" name="sex" type="radio"></label>
+				<label>남성<input class="form-control" name="sex" type="radio"></label>
+				<label>직접지정<input class="form-control" name="sex" type="radio"></label>
+			</div>
+			
 		</div>
 		
 		
 
 	</div>
 
+
+	<script>
+	
+	$(document).ready(function(){ 
+		
+		var now = new Date();
+		var year = now.getFullYear(); 
+		var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
+		var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate());
+		
+		//년도 selectbox만들기 
+		for(var i = 1900 ; i <= year ; i++) { $('#yearInput').append('<option value="' + i + '">' + i + '</option>'); } 
+		// 월별 selectbox 만들기 
+		for(var i=1; i <= 12; i++) { var mm = i > 9 ? i : "0"+i ; $('#monthInput').append('<option value="' + mm + '">' + mm + '월</option>'); } 
+		// 일별 selectbox 만들기 
+		for(var i=1; i <= 31; i++) { var dd = i > 9 ? i : "0"+i ; 
+		$('#dayInput').append('<option value="' + dd + '">' + dd+ '</option>'); } 
+		$("#yearInput > option[value="+year+"]").attr("selected", "true"); 
+		$("#monthInput > option[value="+mon+"]").attr("selected", "true"); 
+		$("#dayInput > option[value="+day+"]").attr("selected", "true"); 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+
+	
+	
+	</script>
+	
+	
 
 </body>
 </html>

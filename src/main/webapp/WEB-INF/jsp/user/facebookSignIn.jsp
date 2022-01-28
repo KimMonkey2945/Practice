@@ -33,7 +33,7 @@
 
 	<div class="facebookLoginWrap">
 		
-		<header class="d-flex align-items-center">
+		<header class="facebookLoginHeader d-flex align-items-center">
 			<h1 class="ml-3 facebookTitle">facebook</h1>
 			<button class="ml-2 btn btn-success" type="button">새 계정 만들기</button>
 		</header>
