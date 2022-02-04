@@ -37,8 +37,10 @@
 
 	<div>
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section></section>
-	
+		<section>
+		
+		
+		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 

@@ -1,4 +1,4 @@
-package com.totti.yongstargram.user.post;
+package com.totti.yongstargram.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,5 +13,12 @@ public class PostController {
 		return "post/listView";
 	}
 	
+	@GetMapping("/createView")
+	public String createView() {
+		return "post/createView";
+		}
 	
-}
+	
+	}
+	
+	
