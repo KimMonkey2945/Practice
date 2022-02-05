@@ -28,6 +28,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
+	
+<link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gamja+Flower&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
@@ -35,15 +37,33 @@
 </head>
 <body>
 
-	<div>
+	<div class="listWrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-		<section>
+		<hr class="createHr">
 		
+		<section>
+			<div class="d-flex justify-content-end mr-5">
+				<a href="/post/createView"><button class="createBtn btn" type="button" >글쓰기</button></a>
+			</div>
 		
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 
+	<script>
+	
+		$(document).ready(function(){
+			
+			
+			
+			
+			
+			
+		});
+	
+	
+	
+	</script>
 
 
 

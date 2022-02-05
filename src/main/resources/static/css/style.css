@@ -124,10 +124,22 @@ hr{
 
 /*post 인스타 리스트*/
 
+.listWrap{
+	width:1200px;
+	height:700px;
+	margin:auto;
+}
+
 .instarLogo{
 	width:40px;
 }
 
+.createBtn{
+	width:70px;
+	height:50px;
+	font-size:25px;
+	font-family: 'Cute Font', cursive;
+}
 
 /*post create*/
 
@@ -138,14 +150,14 @@ hr{
 
 .createPost{
 	width:800px;
-	height:800px;
-	border:solid;
+	height:700px;
 	
 }
 
 .createHeader{
 	width:100%;
 	height:100px;
+	font-family: 'Cute Font', cursive;
 }
 
 .backArrow{
@@ -156,6 +168,17 @@ hr{
 .fileImg{
 	width:400px;
 	height:400px;
+}
+
+.postFile{
+	font-family: 'Cute Font', cursive;
+}
+
+.line{
+	width: 0.1px;
+	height: 500px;
+	border: 0.1px dashed #c0c0c0;
+	
 }
 
 .postText{
