@@ -105,6 +105,8 @@
 				}
 			});
 			
+			
+			
 			$("#saveBtn").on("cilck", function(){
 				let content = $("#textBox").val()
 				let file = $("#fileInput").val()
@@ -115,7 +117,7 @@
 				} 
 				
 				var formData = new FormData();
-				formData.append("file", $("#fileInput"[0].files[0]));
+				formData.append("file", $("#fileInput")[0].files[0]); //이것은 그냥 파일을 가져오는것 일단 흐름을 먼저 잡기.... 일단 파일을 넣을 수 있도록 하고 그후에는 그것을 이미지로 변경해주는 방법이 있음.
 				formData.append("content", content);
 				
 				$.ajax({
