@@ -5,21 +5,52 @@
  <mapper namespace="com.totti.yongstargram.post.dao.PostDAO">
  
  	<insert id="insertPost" parameterType="map">
- 		INSERT INTO `post`
- 		(
- 		`userId`
- 		,`content`
- 		,`imagePath
- 		,`createdAt`
- 		,`updatedAt`
- 		)VALUES(
- 		#{userId}
- 		,#{content}
- 		,#{imagePath}
- 		,now()
- 		,now()
- 		)
+	 	INSERT INTO `post`( 
+	 		`userId`
+	 		,`content`
+	 		,`imagePath`
+	 		,`createdAt`
+	 		,`updatedAt`
+	 	)VALUES(
+	 		#{userId}
+	 		,#{content}
+	 		,#{imagePath}
+	 		,now()
+	 		,now()
+	 		)
  	</insert>
  
+ 
+ 	<select id="selectPostList" resultType="com.totti.yongstargram.post.model.Post">
+ 	
+ 		SELECT
+ 			`id`
+	 		,`userId`
+	 		,`content`
+	 		,`imagePath`
+	 		,`createdAt`
+	 		,`updatedAt`
+ 		FROM
+ 			`post`
+ 		ORDER BY `id` DESC;
+ 	
+ 	
+ 	</select>
+ 	
+ 	<select id="selectPost" resultType="com.totti.yongstargram.post.model.Post">
+ 		
+ 		SELECT
+ 			`id`
+	 		,`userId`
+	 		,`content`
+	 		,`imagePath`
+	 		,`createdAt`
+	 		,`updatedAt`
+ 		FROM
+ 			`post`
+ 		WHERE	
+ 			`id` = #{postId}
+ 	
+ 	</select>
  
  </mapper>

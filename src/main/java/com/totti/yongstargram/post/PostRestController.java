@@ -22,7 +22,7 @@ public class PostRestController {
 	@Autowired
 	private PostBO postBO;
 	
-	@PostMapping("create")
+	@PostMapping("/create")
 	public Map<String, String> create(
 			@RequestParam(value = "file", required = false) MultipartFile file
 			,@RequestParam("content") String content
@@ -45,6 +45,7 @@ public class PostRestController {
 		return result;
 		
 	}
+	
 	
 	
 }

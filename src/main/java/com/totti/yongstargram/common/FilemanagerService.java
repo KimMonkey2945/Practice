@@ -57,7 +57,7 @@ public class FileManagerService {
 		// 파일 접근 가능한 주소 리턴(강사님이 임의로 만든것임..)
 		// <img src="/images/12_1234568/test.png">
 
-		return "/imges/" + directoryName + file.getOriginalFilename(); // 위의 경로 + 부분 잘보며 이해하기
+		return "/images/" + directoryName + file.getOriginalFilename(); // 위의 경로 + 부분 잘보며 이해하기
 
 	}
 

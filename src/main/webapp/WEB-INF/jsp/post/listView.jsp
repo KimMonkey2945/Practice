@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- jstl코어 라이브러리 -->
 <!DOCTYPE html>
 <html>
@@ -28,8 +28,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
-	
-<link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gamja+Flower&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gamja+Flower&family=Lobster&family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
@@ -38,31 +40,37 @@
 <body>
 
 	<div class="listWrap">
-		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<hr class="createHr">
-		
+
 		<section>
-			<div class="d-flex justify-content-end mr-5">
-				<a href="/post/createView"><button class="createBtn btn" type="button" >글쓰기</button></a>
-			</div>
-		
+			<c:choose>
+				<c:when test="${not empty userId}">
+					<div class="d-flex justify-content-end mr-5">
+						<a href="/post/createView"><button class="createBtn btn"
+								type="button">글쓰기</button></a>
+					</div>
+				</c:when>
+			</c:choose>
+			
+			<c:forEach var="post" items="${postList }">
+				<div class="my-3 d-flex justify-content-center">
+					<a class="detailLink" href="/post/detailView?postId=${post.id }">
+						<div class="post">
+							<img src="${post.imagePath }" alt="게시물에 올라간 사진">
+							<div>
+								<p class="post-text text-center">${post.content }</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</c:forEach>
+			
 		</section>
-		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
 	<script>
-	
-		$(document).ready(function(){
-			
-			
-			
-			
-			
-			
-		});
-	
-	
-	
 	</script>
 
 

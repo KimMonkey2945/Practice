@@ -24,8 +24,6 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
@@ -110,10 +108,8 @@
 					$(this).val($(this).val().substring(0, 300));
 				}
 			});
-
-			alert()
 			
-			$("#saveBtn").on("cilck", function() {
+			$("#saveBtn").on("click", function() {
 				let content = $("#textBox").val().trim();
 				let file = $("#fileInput").val();
 

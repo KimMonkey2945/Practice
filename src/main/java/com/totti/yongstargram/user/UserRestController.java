@@ -47,6 +47,7 @@ public class UserRestController {
 			@RequestParam("loginId") String loginId
 			,@RequestParam("password") String password
 			,HttpServletRequest request){
+		
 		User user = userBO.getUser(loginId, password);
 		
 		Map<String, String> result = new HashMap<>();
@@ -59,8 +60,6 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userNickName", user.getNickName());
-			
-			
 			
 		}else {
 			result.put("result", "fail");
