@@ -9,11 +9,13 @@
  		(
  		`userId`
  		,`content`
+ 		,`imagePath
  		,`createdAt`
  		,`updatedAt`
  		)VALUES(
  		#{userId}
  		,#{content}
+ 		,#{imagePath}
  		,now()
  		,now()
  		)

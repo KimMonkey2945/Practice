@@ -24,11 +24,12 @@ public class PostRestController {
 	
 	@PostMapping("create")
 	public Map<String, String> create(
-			@RequestParam("file") MultipartFile file
+			@RequestParam(value = "file", required = false) MultipartFile file
 			,@RequestParam("content") String content
 			, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
+		
 		int userId = (Integer)session.getAttribute("userId");
 		
 		int count = postBO.addPost(userId, content, file);
