@@ -42,7 +42,7 @@
 	<div>
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<hr class="createHr">
-		<section>
+		<section class="detatilWrap">
 			
 			<div class="d-flex justify-content-center align-items-center">
 				<div>
@@ -58,15 +58,18 @@
 							</c:when>
 						</c:choose>
 					</div>
-					<textarea class="detailTextarea">${post.content }</textarea>
+					<textarea class="detailTextarea" readonly>${post.content }</textarea>
 					<div>
 						<textarea class="reply">reply....</textarea>
+					</div>
+					<div class="d-flex justify-content-end">
+						<input class="btn btn-sm" type="button" value="댓글남기기"/>
 					</div>
 				</div>
 			</div>
 			
 			<c:choose>
-				<c:when test="${not empty userId && userId == ${post.userId}">
+				<c:when test="${not empty userId && userId eq post.userId}">
 					<div class="my-5 d-flex justify-content-around">
 						<input class="btn btn-secondary" type="button" value="수정"/>
 						<input id="deleteBtn" data-post-id="${post.id }" class="btn btn-danger" type="button" value="삭제"/>

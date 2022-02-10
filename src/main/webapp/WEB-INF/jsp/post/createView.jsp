@@ -59,8 +59,8 @@
 				<div class="d-flex">
 
 					<div>
-						<input type="file" value="올리기" id="fileInput" />
-						<!--  <img class="fileImg" id="fileInput" alt="파일추가아이콘" src="/static/images/file.png"/>-->
+						<input class="d-none" type="file" value="올리기" id="fileInput" />
+						<img class="fileImg" id="fileInputImg" alt="파일추가아이콘" src="/static/images/file.png"/>
 						<h2 class="postFile text-center">
 							사진 동영상 내파일에서<br>가져오기
 						</h2>
@@ -94,6 +94,10 @@
 
 	<script>
 		$(document).ready(function() {
+			
+			$("#fileInputImg").on("click", function(){
+				$("#fileInput").click();
+			});
 
 			$("#textBox").keyup(function(e) {
 				let content = $(this).val();
@@ -108,7 +112,7 @@
 					$(this).val($(this).val().substring(0, 300));
 				}
 			});
-			
+
 			$("#saveBtn").on("click", function() {
 				let content = $("#textBox").val().trim();
 				let file = $("#fileInput").val();
