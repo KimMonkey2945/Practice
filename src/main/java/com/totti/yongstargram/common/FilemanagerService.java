@@ -71,8 +71,7 @@ public class FileManagerService {
 
 		// 삭제할 파일 경로
 		// filePath : /images/2_981310982/test.png
-		// 실제 파일 경로 : D:\\김인규
-		// 강사\\web\\0927\\springProject\\upload\\image\\2_981310982/test.png
+		// 실제 파일 경로 : C:\\Users\\User\\Desktop\\spring\\project2\\Yongstargram\\upload\\image\\2_981310982/test.png
 
 		String realFilePath = FILE_UPLOAD_PATH + filePath.replace("/images/", "");
 

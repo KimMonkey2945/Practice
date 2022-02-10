@@ -43,10 +43,7 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<hr class="createHr">
 		<section>
-			<div class="d-flex justify-content-around">
-				<input class="btn btn-secondary" type="button" value="수정"/>
-				<input class="btn btn-danger" type="button" value="삭제"/>
-			</div>
+			
 			<div class="d-flex justify-content-center">
 				<div>
 					<img alt="게시판이미지" src="${post.imagePath }">
@@ -55,14 +52,53 @@
 					<textarea class="detailTextarea">${post.content }</textarea>
 				</div>
 			</div>
-		
+			
+			<c:choose>
+				<c:when test="${not empty userId}">
+					<div class="my-5 d-flex justify-content-around">
+						<input class="btn btn-secondary" type="button" value="수정"/>
+						<input id="deleteBtn" data-post-id="${post.id }" class="btn btn-danger" type="button" value="삭제"/>
+					</div>
+				</c:when>
+			</c:choose>
+					
 		</section>
 		
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
-
+	<script>
+		
+		$(document).ready(function(){
+			$("#deleteBtn").on("click", function(){
+				
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"post",
+					url:"/post/delete",
+					data:{"postId":postId},
+					success:function(data){
+						if(data.result == "success"){
+							location.href="/post/listView"
+						}else{
+							alert("삭제실패")
+						}
+					},
+					error:function(){
+						alert("에러발생!!!")
+					}
+						
+				})
+			});
+			
+		});
+		
+	
+	
+	
+	</script>
 
 
 

@@ -46,6 +46,20 @@ public class PostRestController {
 		
 	}
 	
+	@PostMapping("/delete")
+	public Map<String, String> postDelete(@RequestParam("postId") int postId){
+		
+		int count = postBO.deletePost(postId);
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 	
 	
 }
