@@ -66,7 +66,7 @@
 			</div>
 			
 			<c:choose>
-				<c:when test="${not empty userId}">
+				<c:when test="${not empty userId && userId == ${post.userId}">
 					<div class="my-5 d-flex justify-content-around">
 						<input class="btn btn-secondary" type="button" value="수정"/>
 						<input id="deleteBtn" data-post-id="${post.id }" class="btn btn-danger" type="button" value="삭제"/>
