@@ -192,9 +192,21 @@ hr {
 }
 
 /*listDetail*/
+
+.postImage{
+	width:500px;
+	height:600px;
+}
+
 .detailTextarea {
 	width: 300px;
 	height: 400px;
+	border: none;
+	resize: none;
+}
+
+.reply{
+	width: 300px;
 	border: none;
 	resize: none;
 }

@@ -44,12 +44,24 @@
 		<hr class="createHr">
 		<section>
 			
-			<div class="d-flex justify-content-center">
+			<div class="d-flex justify-content-center align-items-center">
 				<div>
-					<img alt="게시판이미지" src="${post.imagePath }">
+					<img class="postImage" alt="게시판이미지" src="${post.imagePath }">
 				</div>
 				<div class="ml-5">
+					<div>
+						<c:choose>
+							<c:when test="${not empty userId}">	
+								<div class="mr-4 mb-4 text-center">
+									<a href="">${userNickName}</a>님 오늘도 좋은하루 보내세요.
+								</div>
+							</c:when>
+						</c:choose>
+					</div>
 					<textarea class="detailTextarea">${post.content }</textarea>
+					<div>
+						<textarea class="reply">reply....</textarea>
+					</div>
 				</div>
 			</div>
 			
@@ -61,7 +73,7 @@
 					</div>
 				</c:when>
 			</c:choose>
-					
+			
 		</section>
 		
 		
