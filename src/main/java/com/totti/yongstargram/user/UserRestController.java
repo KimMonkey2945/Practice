@@ -1,5 +1,6 @@
 package com.totti.yongstargram.user;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.totti.yongstargram.user.bo.UserBO;
 import com.totti.yongstargram.user.model.User;
@@ -60,6 +62,10 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userNickName", user.getNickName());
+			session.setAttribute("userIntroduce", user.getIntroduce());
+			session.setAttribute("userCreatedAt", user.getCreatedAt());
+			session.setAttribute("imagePath", user.getImagePath());
+			session.setAttribute("loginId", user.getLoginId());
 			
 		}else {
 			result.put("result", "fail");
@@ -67,5 +73,29 @@ public class UserRestController {
 		
 		return result;
 		
+	}
+	
+	@PostMapping("/update")
+	public Map<String, String> updateUser(
+			@RequestParam(value="NickName", required=false) String nickName
+			,@RequestParam(value="introduce", required=false) String introduce
+			,@RequestParam(value="file", required=false) MultipartFile file
+			, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = userBO.updateUser(userId, nickName, introduce, file);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
 	}
 }

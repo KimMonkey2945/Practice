@@ -60,10 +60,10 @@
 					</div>
 					<textarea class="detailTextarea" readonly>${post.content }</textarea>
 					<div>
-						<textarea class="reply">reply....</textarea>
+						<input class="reply form-control" type="text" id="commentInput${post.id }" value="댓글을 남겨 주세요.">
 					</div>
 					<div class="d-flex justify-content-end">
-						<input class="btn btn-sm" type="button" value="댓글남기기"/>
+						<input class="btn btn-sm commentBtn" type="button" value="댓글남기기" data-post-id="${post.id }"/>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 			<c:choose>
 				<c:when test="${not empty userId && userId eq post.userId}">
 					<div class="my-5 d-flex justify-content-around">
-						<input class="btn btn-secondary" type="button" value="수정"/>
+						<input class="btn btn-secondary" id="updateBtn" type="button" value="수정"/>
 						<input id="deleteBtn" data-post-id="${post.id }" class="btn btn-danger" type="button" value="삭제"/>
 					</div>
 				</c:when>
@@ -86,6 +86,12 @@
 	<script>
 		
 		$(document).ready(function(){
+			
+			$("#updateBtn").on("click", function(){
+				
+			});
+			
+			
 			$("#deleteBtn").on("click", function(){
 				
 				let postId = $(this).data("post-id");
@@ -106,6 +112,32 @@
 					}
 						
 				})
+			});
+			
+			$(".commentBtn").on("click", function(){
+				//postId, content
+				let postId = $(this).data("post-id");
+				// "#commentInput"
+				let content = $("#commentInput"+postId).val();
+				
+				
+				$.ajax({
+					type:"post",
+					url:"/comment/create",
+					data:{"postId":postId, "content":content},
+					success:function(data){
+						if(data.result == "success"){
+							location.reload();
+						}else{
+							alert("댓글 등록 실패!!");
+						}
+					},
+					error:function(){
+						alert("에러!!!!");
+					}
+				})
+				
+				
 			});
 			
 		});

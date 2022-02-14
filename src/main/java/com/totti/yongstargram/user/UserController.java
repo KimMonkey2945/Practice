@@ -1,5 +1,7 @@
 package com.totti.yongstargram.user;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,5 +44,16 @@ public class UserController {
 	public String facebookSignUp() {
 		return "user/facebookSignUp";
 	}
+
+	@GetMapping("/myInfo")
+	public String myInfo() {
+		return "user/myInfo";
+	}
+	
+	@GetMapping("/updateMyInfo")
+	public String updateMyInfo() {
+		return "user/myInfoUpdate";
+	}
+	
 	
 }

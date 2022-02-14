@@ -17,4 +17,9 @@ public interface UserDAO {
 
 	public User selectUser(@Param("loginId") String loginId
 							,@Param("password") String password);
+	
+	public int updateUser(	@Param("userId") int userId
+							,@Param("nickName") String nickName
+							,@Param("introduce") String introduce
+							,@Param("imagePath") String imagePath);
 }

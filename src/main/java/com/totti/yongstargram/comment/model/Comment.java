@@ -1,19 +1,17 @@
-package com.totti.yongstargram.user.model;
+package com.totti.yongstargram.comment.model;
 
 import java.util.Date;
 
-public class User {
-
+public class Comment {
+	
 	private int id;
-	private String loginId;
-	private String password;
-	private String name;
+	private int postId;
+	private String userId;
 	private String nickName;
-	private String introduce;
 	private String imagePath;
+	private String content;
 	private Date createdAt;
 	private Date updatedAt;
-	
 	
 	
 	public int getId() {
@@ -22,23 +20,17 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLoginId() {
-		return loginId;
+	public int getPostId() {
+		return postId;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
-	public String getPassword() {
-		return password;
+	public String getUserId() {
+		return userId;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getNickName() {
 		return nickName;
@@ -46,17 +38,17 @@ public class User {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public String getIntroduce() {
-		return introduce;
-	}
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
 	public String getImagePath() {
 		return imagePath;
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -70,8 +62,6 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
 	
 	
 	

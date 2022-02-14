@@ -2,8 +2,10 @@ package com.totti.yongstargram.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.totti.yongstargram.common.EncryptUtils;
+import com.totti.yongstargram.common.FileManagerService;
 import com.totti.yongstargram.user.dao.UserDAO;
 import com.totti.yongstargram.user.model.User;
 
@@ -26,5 +28,14 @@ public class UserBO {
 		
 		return	userDAO.selectUser(loginId, EncryptUtils.md5(password));
 	}
+	
+	public int updateUser(int userId, String nickName, String introduce, MultipartFile file) {
+			
+		String filePath = FileManagerService.saveFile(userId, file);
+		
+		return userDAO.updateUser(userId, nickName, introduce, filePath);
+	}
+	
+	
 	
 }

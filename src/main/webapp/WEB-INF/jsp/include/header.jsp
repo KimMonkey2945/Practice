@@ -18,7 +18,7 @@
      	 
      	 <c:choose>
      	 	<c:when test="${not empty userId}">
-     	 		<div class="mr-3">${userNickName }님<a href="/user/signOut">로그아웃</a></div>
+     	 		<div class="mr-3"><a href="/user/myInfo">${userNickName }</a> 님<a class="ml-1" href="/user/signOut">로그아웃</a></div>
      	 	</c:when>
      	 	<c:otherwise>
      	 		<div class="mr-3"><a href="/user/signin_view"></a></div>
