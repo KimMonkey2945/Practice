@@ -113,6 +113,7 @@
 						$.ajax({
 							type:"post",
 							url:"/user/update",
+							data: formData,
 							enctype : "multipart/form-data",
 							processData : false,
 							contentType : false,
