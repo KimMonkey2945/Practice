@@ -86,8 +86,15 @@ public class PostBO {
 	}
 	
 	
-	public int deletePost(int postId) {
+	public int deletePost(int postId ,int userId) {
 		//포스트만 삭제하면 안의 좋아요, 파일, 댓글등이 남아있음.
+		
+		Post post = postDAO.selectPost(postId);
+		
+		if(post.getUserId() != userId) {
+			return 0;
+		}
+		
 		
 		//좋아요 삭제
 		likeBO.deleteLikeByPostId(postId);
@@ -97,7 +104,7 @@ public class PostBO {
 		
 		
 		//파일 삭제
-		Post post = postDAO.selectPost(postId);
+		
 		FileManagerService.removeFile(post.getImagePath());
 		
 		//포스트삭제

@@ -64,8 +64,14 @@ public class PostRestController {
 //	}
 	
 	@GetMapping("/delete")
-	public Map<String, String> delete(@RequestParam("postId") int postId){
-		int count = postBO.deletePost(postId);
+	public Map<String, String> delete(@RequestParam("postId") int postId,
+									HttpServletRequest request){
+		
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = postBO.deletePost(postId, userId);
 
 		Map<String, String> result = new HashMap<>();
 		
