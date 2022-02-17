@@ -51,6 +51,7 @@
 									<img class="" alt="" src="/static/images/banana.png">
 								</div>
 								<div>
+									${userCreatedAt }
 									<div>${userNickName }</div>
 									<div>( ${userLoginId } )</div>
 									<div>${userIntroduce}</div>

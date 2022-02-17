@@ -34,6 +34,7 @@
 	rel="stylesheet">
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <title></title>
 </head>
@@ -53,30 +54,160 @@
 				</c:when>
 			</c:choose>
 			
-			<c:forEach var="post" items="${postList }">
-				<div class="my-3 d-flex justify-content-center">
-					<div>
-						${userNickName}
+			<c:forEach var="postDetail" items="${postList }" >
+				<!--  피드  -->
+				<div class="card border rounded mt-3">
+					<!-- 타이틀 -->
+					<div class="d-flex justify-content-between p-2 border-bottom">
+						<div>
+							<img src="">
+							${postDetail.post.nickName }
+						</div>
+						<div class="more-icon" >
+							<a class="text-dark moreBtn" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
+								<i class="bi bi-three-dots-vertical"></i> 
+							</a>
+						</div>
+					
+						
 					</div>
-					<a class="detailLink" href="/post/detailView?postId=${post.id }">
-						<div class="post">
-							<img src="${post.imagePath }" alt="게시물에 올라간 사진">
-							<div>
-								<p class="post-text text-center">${post.content }</p>
+					<!--이미지 -->
+					<div>
+						<img src="${postDetail.post.imagePath }" class="w-100 imageClick">
+					</div>
+					
+					<!-- 좋아요 -->
+					<div class="m-2">
+						<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
+						<c:choose>
+							<c:when test="${postDetail.like }">
+									<i class="bi bi-heart-fill heart-icon text-danger"></i>
+							</c:when>
+							<c:otherwise>
+									<i class="bi bi-heart heart-icon text-dark"></i>
+							</c:otherwise>
+						</c:choose>
+						</a>
+						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
+					</div>
+					
+					<!--  content -->
+					<div class="middle-size m-2">
+						<b>${postDetail.post.nickName }</b> ${postDetail.post.content }
+					</div>
+					
+					<!--  댓글 -->
+					
+					<div class="mt-2">
+						<div class=" border-bottom m-2">
+							<!-- 댓글 타이틀 -->
+							<div  class="middle-size">
+								댓글
 							</div>
 						</div>
-					</a>
+						
+						<!--  댓글  -->
+						<div class="middle-size m-2">
+							<c:forEach var="comment" items="${postDetail.commentList }">
+							<div class="mt-1">
+								<b>${comment.nickName }</b> ${comment.content }
+							</div>
+							</c:forEach>
+							
+						</div>
+						<!--  댓글  -->
+						
+						<!-- 댓글 입력 -->
+						<div class="d-flex mt-2 border-top">
+							<input type="text" class="form-control border-0 bin" id="commentInput${postDetail.post.id }">
+							<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.post.id }">게시</button>
+						</div>
+						<!-- 댓글 입력 -->
+					</div>
+					<!--  댓글 -->
 				</div>
-			</c:forEach>
+				</c:forEach>
 			
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
 	<script>
+		
+		$(document).ready(function() {
+
+			$(".commentBtn").on("click", function() {
+				// postId, content
+				let postId = $(this).data("post-id");
+				// "#commentInput5"
+				let content = $("#commentInput" + postId).val();
+				
+				
+				$.ajax({
+					type:"post",
+					url:"/comment/create",
+					data:{"postId":postId, "content":content},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("댓글 작성 실패");
+						}
+						
+					}, error:function() {
+						alert("에러!!");
+					}
+					
+				});
+				
+			});
+			
+			$(".likeBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/like",
+					data:{"postId":postId},
+					success:function(data) {
+						
+						location.reload();	
+						
+					}, error:function() {
+						
+						alert("좋아요 에러!!");
+					}
+					
+				});
+				
+			});
+			
+			$(".unlikeBtn").on("click", function(e) {
+				e.preventDefault();
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/unlike",
+					data:{"postId":postId},
+					success:function(data) {
+						
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("좋아요 취소 실패");
+						}
+						
+					}, error:function() {
+						alert("좋아요 취소 실패!!");
+					}
+					
+				});
+			});
+		});
 	</script>
-
-
 
 </body>
 </html>

@@ -7,12 +7,14 @@
  	<insert id="insertPost" parameterType="map">
 	 	INSERT INTO `post`( 
 	 		`userId`
+	 		,`nickName`
 	 		,`content`
 	 		,`imagePath`
 	 		,`createdAt`
 	 		,`updatedAt`
 	 	)VALUES(
 	 		#{userId}
+	 		,#{nickName}
 	 		,#{content}
 	 		,#{imagePath}
 	 		,now()
@@ -26,6 +28,7 @@
  		SELECT
  			`id`
 	 		,`userId`
+	 		,`nickName`
 	 		,`content`
 	 		,`imagePath`
 	 		,`createdAt`

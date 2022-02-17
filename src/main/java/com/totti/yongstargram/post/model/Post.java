@@ -6,6 +6,7 @@ public class Post {
 
 	private int id;
 	private int userId;
+	private String nickName;
 	private String content;
 	private String imagePath;
 	private Date createdAt;
@@ -23,6 +24,12 @@ public class Post {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public String getContent() {
 		return content;
@@ -49,6 +56,8 @@ public class Post {
 		this.updatedAt = updatedAt;
 	}
 	
+	
+
 	
 	
 	

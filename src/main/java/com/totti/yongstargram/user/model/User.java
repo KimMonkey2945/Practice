@@ -1,5 +1,6 @@
 package com.totti.yongstargram.user.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -13,7 +14,7 @@ public class User {
 	private String imagePath;
 	private Date createdAt;
 	private Date updatedAt;
-	
+	private Date join;
 	
 	
 	public int getId() {
@@ -70,6 +71,26 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
+	
+	public Date getJoin() {
+		return join;
+	}
+	
+	public void setJoin(Date join) {
+		
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-DD");
+		format.format(now);
+		format.format(getCreatedAt());
+		
+		
+		
+		
+		this.join = join;
+	}
+	
 	
 	
 	

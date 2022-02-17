@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.totti.yongstargram.post.bo.PostBO;
 import com.totti.yongstargram.post.model.Post;
+import com.totti.yongstargram.post.model.PostDetail;
 
 @Controller
 @RequestMapping("/post")
@@ -23,9 +24,14 @@ public class PostController {
 	private PostBO postBO;
 	
 	@GetMapping("/listView")
-	public String listView(Model model) {
+	public String listView(Model model,
+			HttpServletRequest request) {
 		
-		List<Post> postList = postBO.getPostList();
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postBO.getPostList(userId);
+		
 		model.addAttribute("postList", postList);
 		
 		return "post/listView";

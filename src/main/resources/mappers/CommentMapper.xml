@@ -25,6 +25,26 @@
  			,now()
  		)
  	</insert>
- 
+ 	
+ 	
+ 	<select id="selectCommentList" parameterType="int" resultType="com.totti.yongstargram.comment.model.Comment">
+ 		
+ 		SELECT 
+ 			`id`
+ 			,`postId`
+ 			,`userId`
+ 			,`nickName`
+ 			,`content`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`comment`
+ 		WHERE
+ 			`postId` = #{postId}
+ 		
+ 		
+ 	
+ 	</select>
+ 	
  
  </mapper>
