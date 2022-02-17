@@ -44,90 +44,93 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		<hr class="createHr">
 
-		<section>
+		<section class="d-flex justify-content-center">
 			<c:choose>
 				<c:when test="${not empty userId}">
-					<div class="d-flex justify-content-end mr-5">
-						<a href="/post/createView"><button class="createBtn btn"
-								type="button">글쓰기</button></a>
+					<div class="mr-3">
+						<a href="/post/createView">
+							<button class="createBtn btn" type="button">글쓰기</button>
+						</a>
 					</div>
 				</c:when>
 			</c:choose>
 			
-			<c:forEach var="postDetail" items="${postList }" >
-				<!--  피드  -->
-				<div class="card border rounded mt-3">
-					<!-- 타이틀 -->
-					<div class="d-flex justify-content-between p-2 border-bottom">
+			<div class="">
+				<c:forEach var="postDetail" items="${postList }" >
+					<!--  피드  -->
+					<div class="card rounded mb-4">
+						<!-- 타이틀 -->
+						<div class="d-flex justify-content-between p-2 border-bottom">
+							<div>
+								<img src="">
+								${postDetail.post.nickName }
+							</div>
+							<div class="more-icon" >
+								<a class="text-dark moreBtn" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
+									<i class="bi bi-three-dots-vertical"></i> 
+								</a>
+							</div>
+						</div>
+						<!--이미지 -->
 						<div>
-							<img src="">
-							${postDetail.post.nickName }
+							<img src="${postDetail.post.imagePath }" class="w-100 imageClick">
 						</div>
-						<div class="more-icon" >
-							<a class="text-dark moreBtn" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
-								<i class="bi bi-three-dots-vertical"></i> 
+						
+						<!--  content -->
+						<div class="middle-size text-center m-2">
+							 ${postDetail.post.content }
+						</div>
+						
+						<!-- 좋아요 -->
+						<div class="m-2">
+							<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
+							<c:choose>
+								<c:when test="${postDetail.like }">
+										<i class="bi bi-heart-fill heart-icon text-danger"></i>
+								</c:when>
+								<c:otherwise>
+										<i class="bi bi-heart heart-icon text-dark"></i>
+								</c:otherwise>
+							</c:choose>
 							</a>
-						</div>
-					
-						
-					</div>
-					<!--이미지 -->
-					<div>
-						<img src="${postDetail.post.imagePath }" class="w-100 imageClick">
-					</div>
-					
-					<!-- 좋아요 -->
-					<div class="m-2">
-						<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
-						<c:choose>
-							<c:when test="${postDetail.like }">
-									<i class="bi bi-heart-fill heart-icon text-danger"></i>
-							</c:when>
-							<c:otherwise>
-									<i class="bi bi-heart heart-icon text-dark"></i>
-							</c:otherwise>
-						</c:choose>
-						</a>
-						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
-					</div>
-					
-					<!--  content -->
-					<div class="middle-size m-2">
-						<b>${postDetail.post.nickName }</b> ${postDetail.post.content }
-					</div>
-					
-					<!--  댓글 -->
-					
-					<div class="mt-2">
-						<div class=" border-bottom m-2">
-							<!-- 댓글 타이틀 -->
-							<div  class="middle-size">
-								댓글
-							</div>
+							<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount}개 </span>
 						</div>
 						
-						<!--  댓글  -->
-						<div class="middle-size m-2">
-							<c:forEach var="comment" items="${postDetail.commentList }">
-							<div class="mt-1">
-								<b>${comment.nickName }</b> ${comment.content }
+						
+						<!--  댓글 -->
+						
+						<div class="mt-2">
+							<div>
+								<div class=" border-bottom m-1">
 							</div>
-							</c:forEach>
+								<!-- 댓글 타이틀 -->
+								<div  class="middle-size ml-2">
+									댓글
+								</div>
+							</div>
 							
+							<!--  댓글  -->
+							<div class="middle-size m-2">
+								<c:forEach var="comment" items="${postDetail.commentList }">
+								<div class="mt-2">
+									<b class="mr-2">${comment.nickName }</b> ${comment.content }
+								</div>
+								</c:forEach>
+								
+							</div>
+							<!--  댓글  -->
+							
+							<!-- 댓글 입력 -->
+							<div class="d-flex mt-2 border-top">
+								<input type="text" class="form-control border-0 bin" id="commentInput${postDetail.post.id }">
+								<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.post.id }">게시</button>
+							</div>
+							<!-- 댓글 입력 -->
 						</div>
-						<!--  댓글  -->
-						
-						<!-- 댓글 입력 -->
-						<div class="d-flex mt-2 border-top">
-							<input type="text" class="form-control border-0 bin" id="commentInput${postDetail.post.id }">
-							<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.post.id }">게시</button>
-						</div>
-						<!-- 댓글 입력 -->
+						<!--  댓글 -->
 					</div>
-					<!--  댓글 -->
+					</c:forEach>
 				</div>
-				</c:forEach>
-			
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
@@ -164,7 +167,7 @@
 			
 			$(".likeBtn").on("click", function(e) {
 				e.preventDefault();
-				
+				// 새로고침방지
 				let postId = $(this).data("post-id");
 				
 				$.ajax({

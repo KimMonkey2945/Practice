@@ -5,9 +5,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LikeDAO {
-
-	public int insertLike(@Param("userId") int userId
-						,@Param("postId") int postId);
+	//순서가 틀려서 한참 고민함..... 멍청이였음...
+	public int insertLike(@Param("postId") int postId
+						,@Param("userId") int userId
+						);
 	
 	public int deleteLike(
 			@Param("postId") int postId,

@@ -67,7 +67,7 @@ public class PostBO {
 			
 		List<Comment> commentList = commentBO.getCommentList(post.getId());
 		
-		int likeCount = likeBO.getLikeCount(userId);
+		int likeCount = likeBO.getLikeCount(post.getId());
 		boolean isLike = likeBO.isLike(post.getId(), userId);		
 		
 		//post와comment를 매칭시키기 위해 새로 만듬. entity dto
