@@ -42,12 +42,12 @@ public class PostBO {
 		return postDAO.selectPost(postId);
 	}
 	
-	public int deletePost(int postId) {
-		Post post = postDAO.selectPost(postId);
-		FileManagerService.removeFile(post.getImagePath());
-		
-		return postDAO.deletePost(postId);
-	}
+//	public int deletePost(int postId) {
+//		Post post = postDAO.selectPost(postId);
+//		FileManagerService.removeFile(post.getImagePath());
+//		
+//		return postDAO.deletePost(postId);
+//	}
 	
 	public List<PostDetail> getPostList(int userId){
 		// post리스트 가져오기
@@ -84,4 +84,29 @@ public class PostBO {
 		
 //		return postDAO.selectPostList();
 	}
+	
+	
+	public int deletePost(int postId) {
+		//포스트만 삭제하면 안의 좋아요, 파일, 댓글등이 남아있음.
+		
+		//좋아요 삭제
+		likeBO.deleteLikeByPostId(postId);
+		//댓글 삭제
+		commentBO.deleteComment(postId);
+		
+		
+		
+		//파일 삭제
+		Post post = postDAO.selectPost(postId);
+		FileManagerService.removeFile(post.getImagePath());
+		
+		//포스트삭제
+		return postDAO.deletePost(postId);
+		
+		
+	}
+	
+	
+	
+	
 }

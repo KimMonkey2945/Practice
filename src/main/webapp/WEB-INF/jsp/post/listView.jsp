@@ -65,11 +65,14 @@
 								<img src="">
 								${postDetail.post.nickName }
 							</div>
+							
 							<div class="more-icon" >
-								<a class="text-dark moreBtn" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
+							<!-- forEach반복문 이기 때문에 포스트디테일로 가져옴 -->
+								<a class="text-dark moreBtn" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
 									<i class="bi bi-three-dots-vertical"></i> 
 								</a>
 							</div>
+							
 						</div>
 						<!--이미지 -->
 						<div>
@@ -133,6 +136,19 @@
 				</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      
+	      <div class="modal-body text-center">
+	        <a href="#" id="deleteBtn">삭제하기</a> 
+	      </div>
+	      
+	    </div>
+	  </div>
 	</div>
 
 	<script>
@@ -209,6 +225,43 @@
 					
 				});
 			});
+			
+			
+			$(".moreBtn").on("click",function(e){
+				e.preventDefault();
+				let post = $(this).data("post-id");
+				
+				//postId를 모달의 삭제하기 버튼에 값을 부여한다.
+				//$("#deleteBtn").attr("", postId); //값을 가져오는것 넣고싶으면 " , " 추가
+				$("#deleteBtn").data("post-id", postId);
+				
+				
+				
+				
+			});
+			
+			$("#deleteBtn").on("click", function(e){
+				e.preventDefault();
+				
+				let postId = $(this).data("post-id"); //이 값은 태그에서 셋팅한 값이 아니라 위에서 자바스크립트로 셋팅한 값
+				
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete"
+					data:{"postId":postId},
+					success:function(){
+						if(data.result == "success"){
+							location.reload();
+						}else{
+							alert(삭제실패);
+						}
+					},error:function(){
+						alert("삭제실패")
+					}
+				});
+			});
+			
 		});
 	</script>
 

@@ -20,6 +20,10 @@ public interface PostDAO {
 	
 	public Post selectPost(@Param("postId") int postId);
 	
+//	public int deletePost(@Param("postId") int postId);
+	
 	public int deletePost(@Param("postId") int postId);
-		
+	
+	
+	
 }

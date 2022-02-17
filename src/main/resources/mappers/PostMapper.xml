@@ -40,7 +40,7 @@
  	
  	</select>
  	
- 	<select id="selectPost" resultType="com.totti.yongstargram.post.model.Post">
+ 	<select id="selectPost" resultType="com.totti.yongstargram.post.model.Post" parameterType="int">
  		
  		SELECT
  			`id`
@@ -56,9 +56,24 @@
  	
  	</select>
  	
+ 	<!--  
+ 	
  	<delete id="deletePost" parameterType="int">
  		DELETE FROM `post`
  		WHERE `id` = #{postId}
  	</delete>
- 
+ 	
+ 	-->
+ 	
+ 	<delete id="deletePost" parameterType="int">
+ 		DELETE FROM `post`
+ 		WHERE 
+ 			`id` = #{postId}
+ 	</delete>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  </mapper>

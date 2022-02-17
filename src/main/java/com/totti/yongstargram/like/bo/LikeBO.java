@@ -53,8 +53,10 @@ public class LikeBO {
 	}
 	
 	
-	
-	
+	//위에 있지만 그건 파라미터가 다름...
+	public int deleteLikeByPostId(int postId) {
+		return likeDAO.deleteLikeByPostId(postId);
+	}
 	
 	
 	
