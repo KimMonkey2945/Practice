@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -19,9 +23,6 @@
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,14 +66,17 @@
 								<img src="">
 								${postDetail.post.nickName }
 							</div>
-							
-							<div class="more-icon" >
-							<!-- forEach반복문 이기 때문에 포스트디테일로 가져옴 -->
-								<a class="text-dark moreBtn" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
-									<i class="bi bi-three-dots-vertical"></i> 
-								</a>
-							</div>
-							
+						
+							<c:choose>
+								<c:when test="${not empty userId && userId == postDetail.post.userId}">
+									<div class="more-icon" >
+									<!-- forEach반복문 이기 때문에 포스트디테일로 가져옴 -->
+										<a class="text-dark moreBtn" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
+											<i class="bi bi-three-dots-vertical"></i> 
+										</a>
+									</div>
+								</c:when>
+							</c:choose>
 						</div>
 						<!--이미지 -->
 						<div>
