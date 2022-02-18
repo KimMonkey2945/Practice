@@ -40,6 +40,21 @@
  	
  	</select>
  	
+ 	<!--  
+ 	
+ 	<delete id="deletePost" parameterType="int">
+ 		DELETE FROM `post`
+ 		WHERE `id` = #{postId}
+ 	</delete>
+ 	
+ 	-->
+ 	
+ 	<delete id="deletePost" parameterType="int">
+ 		DELETE FROM `post`
+ 		WHERE 
+ 			`id` = #{postId}
+ 	</delete>
+ 	
  	<select id="selectPost" resultType="com.totti.yongstargram.post.model.Post" parameterType="int">
  		
  		SELECT
@@ -55,21 +70,6 @@
  			`id` = #{postId}
  	
  	</select>
- 	
- 	<!--  
- 	
- 	<delete id="deletePost" parameterType="int">
- 		DELETE FROM `post`
- 		WHERE `id` = #{postId}
- 	</delete>
- 	
- 	-->
- 	
- 	<delete id="deletePost" parameterType="int">
- 		DELETE FROM `post`
- 		WHERE 
- 			`id` = #{postId}
- 	</delete>
  	
  	
  	

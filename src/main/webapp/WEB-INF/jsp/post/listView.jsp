@@ -156,10 +156,18 @@
 		$(document).ready(function() {
 
 			$(".commentBtn").on("click", function() {
+				
 				// postId, content
 				let postId = $(this).data("post-id");
 				// "#commentInput5"
 				let content = $("#commentInput" + postId).val();
+				
+				if (content ==""){
+					alert("댓글 내용을 입력해주세요~!");
+					return;
+				}
+				
+				
 				
 				
 				$.ajax({
@@ -229,15 +237,12 @@
 			
 			$(".moreBtn").on("click",function(e){
 				e.preventDefault();
-				let post = $(this).data("post-id");
+				
+				let postId = $(this).data("post-id");
 				
 				//postId를 모달의 삭제하기 버튼에 값을 부여한다.
 				//$("#deleteBtn").attr("", postId); //값을 가져오는것 넣고싶으면 " , " 추가
 				$("#deleteBtn").data("post-id", postId);
-				
-				
-				
-				
 			});
 			
 			$("#deleteBtn").on("click", function(e){
@@ -248,16 +253,16 @@
 				
 				$.ajax({
 					type:"get",
-					url:"/post/delete"
+					url:"/post/delete",
 					data:{"postId":postId},
-					success:function(){
+					success:function(data){
 						if(data.result == "success"){
 							location.reload();
 						}else{
-							alert(삭제실패);
+							alert("삭제 실패!!");
 						}
 					},error:function(){
-						alert("삭제실패")
+						alert("삭제 에러!!!")
 					}
 				});
 			});
