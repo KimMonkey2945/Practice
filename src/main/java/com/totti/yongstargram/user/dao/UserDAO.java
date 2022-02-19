@@ -22,4 +22,6 @@ public interface UserDAO {
 							,@Param("nickName") String nickName
 							,@Param("introduce") String introduce
 							,@Param("imagePath") String imagePath);
+	
+	public User selectId(@Param("loginId") String loginId);
 }

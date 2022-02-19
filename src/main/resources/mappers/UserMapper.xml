@@ -51,5 +51,21 @@
 		,`imagePath` = #{imagePath}
 		,`updatedAt` = now()
 	</update> 
+	
+	<select id="selectId" resultType="com.totti.yongstargram.user.model.User">
+		SELECT
+ 			`id`
+ 			,`loginId`
+ 			,`password`
+ 			,`name`
+ 			,`nickName`
+ 			,`introduce`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}
+	</select>
  
  </mapper>

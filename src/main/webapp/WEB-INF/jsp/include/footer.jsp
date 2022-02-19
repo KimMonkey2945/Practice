@@ -3,5 +3,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 			<footer class=" mt-5 d-flex justify-content-center">
-				<div class="small text-secondary">© 2022 Instagram from Meta</div>
+				<div class="small text-secondary">© 2022 Monkeys from KimMonkey</div>
 			</footer>

@@ -1,6 +1,5 @@
 package com.totti.yongstargram.user;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,4 +98,24 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	
+	@GetMapping("/checkId")
+	public Map<String, String> checkId(@RequestParam("loginId") String loginId){
+		
+		User user = userBO.checkId(loginId);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(user == null) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+		
+	}
+	
+	
 }

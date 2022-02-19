@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -19,15 +24,10 @@
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Lobster&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
@@ -38,52 +38,39 @@
 
 	<div id="signUpView">
 		<div class="content">
-			<h1 class="yongstarLogo text-center">Yongstargram</h1>
-			<div class="information text-center display-5 text-secondary">
-				친구들의 사진과 동영상을 보려면<br>가입하세요
-			</div>
-			<div class="d-flex justify-content-center">
-					<button class="facebookSigninBtn btn btn-primary text-light">
-						<img class="mr-2 facebookLogo" src="/static/images/facebookLogo.png" alt="페이스북로고" />
-						<a href="/user/facebookSignIn_View" class="facebookSigninBtn text-center text-light">Facebook으로 로그인</a>
-					</button>
-			</div>
-			<div class="d-flex">
+			<h1 class="MokeysTitle text-center">MonKeys</h1>
 				<hr>
-				또는
-				<hr>
-			</div>
 			
 				<div class="d-flex justify-content-center">
 					<div>
-						<input class="form-control" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
-						<input class="form-control my-2"type="text" id="nameInput" placeholder="성명" />
-						<input class="form-control my-2" type="text" id="nickNameInput" placeholder="사용자 이름" />
-						<input class="form-control my-2" type="password" id="passwordInput" placeholder="비밀번호" />
-						<textarea class="form-control my-2" id="introduceInput" placeholder="자기소개"></textarea>
-						<button class="form-control btn btn-block btn-primary" id="joinBtn" type="button">가입</button>
+						<div class="">
+							<input class="form-control" type="text" id="loginIdInput" placeholder="휴대폰 번호 또는 이메일 주소" />
+							<div class="duplicateIdNo text-danger">중복 아이디입니다</div>
+							<div class="duplicateIdOk text-primary">사용 가능한 아이디입니다</div>
+							<input class="mt-2 form-control btn btn-warning" type="button" id="loginIdCheck" value="아이디확인"/>
+						</div>
+						<input class="form-control my-3"type="text" id="nameInput" placeholder="성명" />
+						<input class="form-control my-3" type="text" id="nickNameInput" placeholder="사용자 이름" />
+						<input class="form-control my-3" type="password" id="passwordInput" placeholder="비밀번호" />
+						<textarea class="form-control my-3" id="introduceInput" placeholder="자기소개"></textarea>
+						<button class="form-control btn btn-block btn-warning" id="joinBtn" type="button">가입</button>
 					</div>
 				</div>
 		
 		
 		</div>
 		<div class="mt-3 d-flex content2 align-items-center justify-content-center">
-			계정이 있으신가요?<a class="ml-3" href="/user/signin_view">로그인</a>
+			 Monkeys 회원이신가요??<a class="ml-3" href="/user/signin_view">로그인</a>
 		</div>
-		
-		<div class="text-center">앱을 다운로드하세요.</div>
-		<div class="mt-4 d-flex align-items-center justify-content-center">			 
-			<a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img alt="애플스토어이미지" src="/static/images/applestore.png"></a> 
-			<a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=67D3F259-AE2C-46A5-81EA-19E7F2054EF7&utm_content=lo&utm_medium=badge"><img class="ml-2" alt="구글플레이스토어이미지" src="/static/images/googlestore.png"></a>
-		</div>
-		<footer class=" mt-3 d-flex justify-content-center">
-			<div class="small text-secondary">© 2022 Instagram from Meta</div>
-		</footer>
-
 	</div>
+		<footer class=" mt-3 d-flex justify-content-center">
+			<div class="small text-secondary">© 2022 Monkeys from KimMonkey</div>
+		</footer>
 
 	<script>
 		$(document).ready(function(){
+			$(".duplicateIdNo").hide();
+			$(".duplicateIdOk").hide();
 			
 			$("#joinBtn").on("click", function(){
 				var loginId = $("#loginIdInput").val();
@@ -119,6 +106,7 @@
 						if(data.result == "success"){
 							location.href="/user/signin_view";
 						}else{
+							
 							alert("회원가입 실패!!");
 						}
 					},
@@ -127,13 +115,40 @@
 						}
 					
 				});	
+					
+			});
+			
+			$("#loginIdCheck").on("click", function(){
 				
+				let loginId = $("#loginIdInput").val();
 				
+				if(loginId == ""){
+					alert("휴대폰 또는 이메일 주소를 입력하세요!!");
+					return;
+				}
 				
-				
+				$.ajax({
+					type:"get",
+					url:"/user/checkId",
+					data:{"loginId":loginId},
+					success:function(data){
+						if(data.result == "success"){
+							$(".duplicateIdOk").show();
+							$(".duplicateIdNo").hide();	
+						}else{
+							$(".duplicateIdNo").show();
+							$(".duplicateIdOk").hide();
+						}
+					},
+					error:function(){
+						alert("에러발생!!!");
+					}
+				});
 				
 				
 			});
+			
+			
 		});
 	
 	

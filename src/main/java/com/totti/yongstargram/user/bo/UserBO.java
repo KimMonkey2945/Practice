@@ -36,6 +36,8 @@ public class UserBO {
 		return userDAO.updateUser(userId, nickName, introduce, filePath);
 	}
 	
-	
+	public User checkId(String loginId) {
+		return userDAO.selectId(loginId);
+	}
 	
 }
